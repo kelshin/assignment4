@@ -10,19 +10,14 @@ import UIKit
 
 class DetailsViewController: UIViewController {
 
-    var city: String = ""
-    var temperature: Double = 0.00
-    var summary: String = ""
-    var country: String = ""
-    var widthAnchor: NSLayoutConstraint?
-    var heightAnchor: NSLayoutConstraint?
+    var city: City!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor =  .white
         
         let backButt = UIBarButtonItem()
-        backButt.title = country.uppercaseFirstLetter()
+        backButt.title = city.icon.uppercaseFirstLetter()
         navigationController?.navigationBar.topItem?.backBarButtonItem = backButt
         
         let countryLabel = UILabel()
@@ -31,7 +26,7 @@ class DetailsViewController: UIViewController {
         countryLabel.font = UIFont(name: "HelveticaNeue-Bold", size: 15)
         
         let countryName = UILabel()
-        switch country {
+        switch city.icon {
         case "canada":
             countryName.text = "🇨🇦"
         case "italy":
@@ -55,7 +50,7 @@ class DetailsViewController: UIViewController {
         cityLabel.font = UIFont(name: "HelveticaNeue-Bold", size: 15)
         
         let cityName = UILabel()
-        cityName.text = city
+        cityName.text = city.name
         cityName.textAlignment = .center
         cityName.font = UIFont(name: "Helvetica Neue", size: 20)
         
@@ -65,7 +60,7 @@ class DetailsViewController: UIViewController {
         tempLabel.font = UIFont(name: "HelveticaNeue-Bold", size: 15)
         
         let temperatureLabel = UILabel()
-        temperatureLabel.text = String(temperature)
+        temperatureLabel.text = String(city.temp)
         temperatureLabel.textAlignment = .center
         temperatureLabel.font = UIFont(name: "Helvetica Neue", size: 20)
         
@@ -75,7 +70,7 @@ class DetailsViewController: UIViewController {
         sumLabel.font = UIFont(name: "HelveticaNeue-Bold", size: 15)
         
         let summaryLabel = UILabel()
-        summaryLabel.text = summary
+        summaryLabel.text = city.summary
         summaryLabel.textAlignment = .center
         summaryLabel.font = UIFont(name: "Helvetica Neue", size: 20)
         
